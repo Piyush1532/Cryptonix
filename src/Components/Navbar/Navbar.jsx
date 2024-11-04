@@ -11,23 +11,18 @@ const Navbar = () => {
   const currency=useSelector((state)=> state.coin.currency)
 
 
-
   const currencyHandler = (event) => {
-
-    switch (event.target.value) {
-      case 'usd':
-        dispatch(setCurrency({ name: 'usd', symbol: '$' }));
-        break;
-      case 'eur':
-        dispatch(setCurrency({ name: 'eur', symbol: '€' }));
-        break;
-      case 'inr':
-        dispatch(setCurrency({ name: 'inr', symbol: '₹' }));
-        break;
-      default:
-        dispatch(setCurrency({ name: 'usd', symbol: '$' }));
+    if (event.target.value === 'usd') {
+      dispatch(setCurrency({ name: 'usd', symbol: '$' }));
+    } else if (event.target.value === 'eur') {
+      dispatch(setCurrency({ name: 'eur', symbol: '€' }));
+    } else if (event.target.value === 'inr') {
+      dispatch(setCurrency({ name: 'inr', symbol: '₹' }));
+    } else {
+      dispatch(setCurrency({ name: 'usd', symbol: '$' }));
     }
   };
+  
 
 
   return (
