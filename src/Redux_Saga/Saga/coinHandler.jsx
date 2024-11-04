@@ -1,6 +1,6 @@
 import { call, put } from 'redux-saga/effects';
-import { fetchallCryptoServices } from './coinServices.jsx';
-import { setAllCryptoCoin, setspecificCryptoCoinData } from '../coinSlice.jsx';
+import { fetchallCryptoServices, fetchcryptocoinRecords } from './coinServices.jsx';
+import { setAllCryptoCoin, setCryptoCoinRecords, setspecificCryptoCoinData } from '../coinSlice.jsx';
 
 
 export function* allCryptoCoinHandler(){
@@ -19,4 +19,16 @@ export function*  cryptoCoinDataHandler(action){
     } catch (error) {
      console.log(error)   
     }
+}
+
+
+
+export function* cryptocoinRecordHandler(action){
+try {
+    const { coinId, historicRecord } = action.payload;
+    const data =yield call(fetchcryptocoinRecords,coinId,historicRecord)
+    yield put(setCryptoCoinRecords(data))
+} catch (error) {
+    console.log(error)
+}
 }
