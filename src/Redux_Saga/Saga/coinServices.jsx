@@ -9,7 +9,7 @@ export const fetchallCryptoServices=async()=>{
           params: {
             vs_currency: 'usd',
             order: 'market_cap_desc',
-            per_page: 10            
+            per_page: 12            
           },
           headers: {
             accept: 'application/json', 
@@ -40,3 +40,26 @@ export const fetchCryptoCoinDataServices  = async (coinId) => {
       throw error;
     }
   };
+
+
+
+
+  export const fetchcryptocoinRecords=async(coinId,historicRecord)=>{
+    try {
+      const response = await axios.get(`https://api.coingecko.com/api/v3/coins/${coinId}/market_chart`, {
+        params: {
+          vs_currency: 'usd',
+          days: historicRecord, 
+        },
+        headers: {
+          accept: 'application/json',
+          'x-cg-demo-api-key': apiKey,
+        },
+      });
+      console.log(response.data)
+      return response.data;
+    } catch (error) {
+      console.error(`Error fetching historical records for ${coinId}:`, error);
+      throw error;
+    }
+  }
