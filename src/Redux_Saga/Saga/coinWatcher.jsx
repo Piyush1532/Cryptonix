@@ -1,6 +1,6 @@
 import { takeLatest } from 'redux-saga/effects';
-import { allCoins, specificCoinData } from '../coinSlice';
-import { allCryptoCoinHandler, cryptoCoinDataHandler } from './coinHandler';
+import { allCoins, coinRecords, specificCoinData } from '../coinSlice';
+import { allCryptoCoinHandler, cryptoCoinDataHandler, cryptocoinRecordHandler } from './coinHandler';
 
 
 export function* allCryptoCoinWatcher(){
@@ -10,4 +10,8 @@ export function* allCryptoCoinWatcher(){
 
 export function* coinDataWatcher(){
     yield takeLatest(specificCoinData.type,cryptoCoinDataHandler)
+}
+
+export function * coinRecordWatcher(){
+    yield takeLatest(coinRecords.type,cryptocoinRecordHandler)
 }
