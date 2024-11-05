@@ -1,9 +1,8 @@
 import axios from "axios";
 
-// const  apiKey="CG-UTCbe8ByT4SpWyx7KEz2p6nj"
+const apiKey=import.meta.env.VITE_API_KEY
+console.log("apikey",apiKey)
 export const fetchallCryptoServices=async()=>{
-  const apiKey=import.meta.env.VITE_API_KEY
-
     try {
         const response = await axios.get('https://api.coingecko.com/api/v3/coins/markets', {
           params: {
