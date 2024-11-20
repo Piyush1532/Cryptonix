@@ -13,16 +13,23 @@ const coinSlice=createSlice({
     initialState,
     reducers:{
         allCoins(){},
+
         setAllCryptoCoin(state,action){
 state.allCryptoCoin=action.payload
         },
+
        specificCoinData:()=>{},
+
         setspecificCryptoCoinData(state,action){
 state.cryptocoinData=action.payload
         },
+
+        coinRecords(){},
+        
         setCryptoCoinRecords(state,action){
 state.cryptocoinRecords=action.payload
         },
+        
         setCurrency(state,action){
             state.currency=action.payload
         }
@@ -30,6 +37,6 @@ state.cryptocoinRecords=action.payload
 })
 
 
-export const {setAllCryptoCoin,setspecificCryptoCoinData,setCryptoCoinRecords,setCurrency,allCoins,specificCoinData}=coinSlice.actions;
+export const {setAllCryptoCoin,setspecificCryptoCoinData,setCryptoCoinRecords,setCurrency,allCoins,specificCoinData,coinRecords}=coinSlice.actions;
 
 export default coinSlice.reducer;
