@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const apiKey=import.meta.env.VITE_API_KEY
-console.log("apikey",apiKey)
+// console.log("apikey",apiKey)
+
 export const fetchallCryptoServices=async()=>{
     try {
         const response = await axios.get('https://api.coingecko.com/api/v3/coins/markets', {
@@ -15,7 +16,7 @@ export const fetchallCryptoServices=async()=>{
             'x-cg-demo-api-key': apiKey 
           },
         });
-        console.log(response.data)
+        // console.log(response.data)
         return response.data; 
       } catch (error) {
         console.error('Error fetching all coins:', error);
@@ -32,7 +33,7 @@ export const fetchCryptoCoinDataServices  = async (coinId) => {
           'x-cg-demo-api-key': apiKey
         },
       });
-// console.log(response.data)
+console.log(response.data)
       return response.data; 
     } catch (error) {
       console.error(`Error fetching data for coin ${coinId}:`, error);
@@ -43,7 +44,7 @@ export const fetchCryptoCoinDataServices  = async (coinId) => {
 
 
 
-  export const fetchcryptocoinRecords=async(coinId,historicRecord)=>{
+  export const fetchcryptocoinRecordsServices=async(coinId,historicRecord)=>{
     try {
       const response = await axios.get(`https://api.coingecko.com/api/v3/coins/${coinId}/market_chart`, {
         params: {
@@ -56,7 +57,8 @@ export const fetchCryptoCoinDataServices  = async (coinId) => {
         },
       });
       console.log(response.data)
-      return response.data;
+      // console.log("API Response Object:", response);  // Log the entire response object
+      return response.data
     } catch (error) {
       console.error(`Error fetching historical records for ${coinId}:`, error);
       throw error;
